@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShopifyPosIntegrasjon")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a444ff4b7df5081240d8ef8b15cc6cc4e082d99")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60ebd91b1574d41275b35fa6f112d43bf580fabe")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShopifyPosIntegrasjon")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShopifyPosIntegrasjon")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
