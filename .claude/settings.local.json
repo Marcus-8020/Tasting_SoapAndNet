@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node main.js)"
+      "Bash(node main.js)",
+      "Bash(dotnet --version)",
+      "Bash(\"/c/Program Files/dotnet/dotnet.exe\" --version)",
+      "Bash(\"/c/Program Files \\(x86\\)/dotnet/dotnet.exe\" --version)",
+      "Bash(where dotnet)"
     ]
   }
 }

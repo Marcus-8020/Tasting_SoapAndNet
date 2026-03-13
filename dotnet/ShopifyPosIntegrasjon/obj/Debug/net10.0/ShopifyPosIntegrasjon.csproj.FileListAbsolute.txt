@@ -1,0 +1,15 @@
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\bin\Debug\net10.0\ShopifyPosIntegrasjon.exe
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\bin\Debug\net10.0\ShopifyPosIntegrasjon.deps.json
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\bin\Debug\net10.0\ShopifyPosIntegrasjon.runtimeconfig.json
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\bin\Debug\net10.0\ShopifyPosIntegrasjon.dll
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\bin\Debug\net10.0\ShopifyPosIntegrasjon.pdb
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\ShopifyPosIntegrasjon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\ShopifyPosIntegrasjon.AssemblyInfoInputs.cache
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\ShopifyPosIntegrasjon.AssemblyInfo.cs
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\ShopifyPosIntegrasjon.csproj.CoreCompileInputs.cache
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\ShopifyPosIntegrasjon.sourcelink.json
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\ShopifyPosIntegrasjon.dll
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\refint\ShopifyPosIntegrasjon.dll
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\ShopifyPosIntegrasjon.pdb
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\ShopifyPosIntegrasjon.genruntimeconfig.cache
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\ShopifyPosIntegrasjon\obj\Debug\net10.0\ref\ShopifyPosIntegrasjon.dll
