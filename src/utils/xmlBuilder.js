@@ -15,8 +15,10 @@
  *  JSON:  { "navn": "Marcus" }
  *  XML:   <Navn>Marcus</Navn>
  *
- * I VIRKELIGHETEN ville denne XML-en bli sendt over HTTP til
- * et SOAP-endepunkt – men her skriver vi den bare ut til konsoll.
+ * NYT I DEL 2:
+ *  - byggFraktXml(): ny hjelpefunksjon for fraktlinjer
+ *  - byggRabattXml(): ny hjelpefunksjon for rabattkoder
+ *  - byggSoapXml(): inkluderer nå Fraktlinjer og Rabatter i XML
  * ============================================================
  */
 
@@ -24,7 +26,6 @@
  * byggProduktXml
  * --------------
  * Hjelpefunksjon som lager XML for ett enkelt produkt.
- * Kalles én gang per produkt i ordren.
  *
  * @param {object} produkt - Et produkt-objekt fra POS-ordren
  * @returns {string} - XML-streng for produktet
@@ -38,6 +39,40 @@ function byggProduktXml(produkt) {
             <Enhetspris>${produkt.enhetspris}</Enhetspris>
             <Linjetotal>${produkt.linjetotal}</Linjetotal>
         </Produkt>`;
+}
+
+/**
+ * byggFraktXml (DEL 2)
+ * --------------------
+ * Hjelpefunksjon som lager XML for én fraktlinje.
+ * Kalles én gang per fraktlinje i ordren.
+ *
+ * @param {object} linje - En fraktlinje fra POS-ordren
+ * @returns {string} - XML-streng for fraktlinjen
+ */
+function byggFraktXml(linje) {
+  return `
+        <Fraktlinje>
+            <Metode>${linje.metode}</Metode>
+            <Pris>${linje.pris}</Pris>
+        </Fraktlinje>`;
+}
+
+/**
+ * byggRabattXml (DEL 2)
+ * ---------------------
+ * Hjelpefunksjon som lager XML for én rabattkode.
+ *
+ * @param {object} rabatt - En rabatt fra POS-ordren
+ * @returns {string} - XML-streng for rabatten
+ */
+function byggRabattXml(rabatt) {
+  return `
+        <Rabatt>
+            <Kode>${rabatt.kode}</Kode>
+            <Belop>${rabatt.belop}</Belop>
+            <Type>${rabatt.type}</Type>
+        </Rabatt>`;
 }
 
 /**
@@ -58,12 +93,15 @@ function byggProduktXml(produkt) {
  * @returns {string} - Komplett SOAP XML-streng
  */
 function byggSoapXml(posOrdre) {
-  // Bygg XML for alle produkter og slå dem sammen til én streng
-  // .map() lager array av XML-strenger, .join("") slår dem sammen
-  const produkterXml = posOrdre.produkter.map(byggProduktXml).join("");
+  const produkterXml  = posOrdre.produkter.map(byggProduktXml).join("");
+  const fraktLinjerXml = posOrdre.fraktLinjer.map(byggFraktXml).join("");
 
-  // Template literal (backticks) gjør det enkelt å bygge lange strenger
-  // med variabler inni
+  // Bygg rabatt-XML – men bare hvis det finnes rabatter
+  const rabatterXml = posOrdre.rabatter.length > 0
+    ? `<Rabatter>${posOrdre.rabatter.map(byggRabattXml).join("")}
+            </Rabatter>`
+    : "";
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
     <soapenv:Body>
@@ -71,8 +109,11 @@ function byggSoapXml(posOrdre) {
             <OrdreId>${posOrdre.ordreId}</OrdreId>
             <Kundenavn>${posOrdre.kundenavn}</Kundenavn>
             <KundeEpost>${posOrdre.kundeEpost}</KundeEpost>
-            <FraktMetode>${posOrdre.fraktMetode}</FraktMetode>
-            <FraktPris>${posOrdre.fraktPris}</FraktPris>
+            <Fraktlinjer>${fraktLinjerXml}
+            </Fraktlinjer>
+            <TotalFrakt>${posOrdre.totalFrakt}</TotalFrakt>
+            ${rabatterXml}
+            <TotalRabatt>${posOrdre.totalRabatt}</TotalRabatt>
             <TotalBelop>${posOrdre.totalBelop}</TotalBelop>
             <Produkter>${produkterXml}
             </Produkter>
@@ -89,9 +130,10 @@ module.exports = { byggSoapXml };
 /**
  * ============================================================
  * OPPSUMMERING:
- *  - byggProduktXml(): lager XML for ett produkt (intern hjelpefunksjon)
- *  - byggSoapXml(): lager komplett SOAP-envelope med hele ordren
- *  - XML-strukturen etterligner hva et ekte SOAP-kall ville sendt
+ *  - byggProduktXml(): lager XML for ett produkt
+ *  - byggFraktXml():   lager XML for én fraktlinje (ny i del 2)
+ *  - byggRabattXml():  lager XML for én rabattkode (ny i del 2)
+ *  - byggSoapXml():    lager komplett SOAP-envelope med hele ordren
  *  - I .NET ville vi brukt en WSDL og auto-genererte klasser,
  *    men prinsippet er det samme: strukturert XML med faste feltnavn
  * ============================================================

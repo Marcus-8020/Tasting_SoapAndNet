@@ -1,0 +1,10 @@
+[2026-03-13T09:18:18.358Z] [INFO    ] Integrasjon startet for ordre #1001
+[2026-03-13T09:18:18.363Z] [INFO    ] Validering OK for ordre #1001
+[2026-03-13T09:18:18.366Z] [INFO    ] Mapping fullført – total beregnet til kr 521,-
+[2026-03-13T09:18:18.390Z] [ADVARSEL] Ordre #1001 har rabattkoder: VAAR25 (total -kr 25,-)
+[2026-03-13T09:18:18.398Z] [INFO    ] Ordre #1001 overført til POS – FULLFØRT
+[2026-03-13T09:18:48.809Z] [INFO    ] Integrasjon startet for ordre #1001
+[2026-03-13T09:18:48.854Z] [INFO    ] Validering OK for ordre #1001
+[2026-03-13T09:18:48.856Z] [INFO    ] Mapping fullført – total beregnet til kr 521,-
+[2026-03-13T09:18:48.856Z] [ADVARSEL] Ordre #1001 har rabattkoder: VAAR25 (total -kr 25,-)
+[2026-03-13T09:18:48.857Z] [INFO    ] Ordre #1001 overført til POS – FULLFØRT

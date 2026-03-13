@@ -10,6 +10,9 @@
  *  - Ordren har ingen produkter
  *  - Pris er null eller negativ
  *  Uten validering krasjer systemet eller sender feil data til POS.
+ *
+ * NYT I DEL 2:
+ *  - Sjekk 6: Validerer rabattkoder hvis de finnes
  * ============================================================
  */
 
@@ -56,6 +59,19 @@ function validateOrder(order) {
     }
   });
 
+  // Sjekk 6 (DEL 2): Valider rabattkoder hvis de finnes
+  // "??" betyr: hvis discount_codes er null/undefined, bruk tom array []
+  // Dermed feiler ikke loopen hvis feltet mangler helt
+  const rabatter = order.discount_codes ?? [];
+  rabatter.forEach((rabatt, index) => {
+    if (!rabatt.code) {
+      throw new Error(`Rabatt nr. ${index + 1} mangler kode`);
+    }
+    if (typeof rabatt.amount !== "number" || rabatt.amount < 0) {
+      throw new Error(`Rabatt "${rabatt.code}" har ugyldig beløp`);
+    }
+  });
+
   // Hvis vi kommer hit uten feil: ordren er gyldig!
   console.log("✓ Validering OK – ordren er gyldig");
 }
@@ -69,7 +85,7 @@ module.exports = { validateOrder };
  * ============================================================
  * OPPSUMMERING:
  *  - Én funksjon: validateOrder(order)
- *  - Sjekker ID, e-post, produkter, pris og SKU
+ *  - Sjekker ID, e-post, produkter, pris, SKU og rabattkoder
  *  - Kaster feil tidlig slik at resten av systemet er trygt
  *  - Brukes i main.js FØR mapping skjer
  * ============================================================

@@ -5,14 +5,20 @@
  *         I virkeligheten ville denne dataen kommet via en webhook
  *         eller API-kall fra Shopify. Her "faker" vi den for å lære
  *         datastrukturen uten å trenge en ekte Shopify-butikk.
+ *
+ * NYT I DEL 2:
+ *  - discount_codes: Rabattkoder brukt på ordren
+ *  - Flere fraktlinjer i shipping_lines (f.eks. to forsendelser)
+ *  - total_price er oppdatert til å reflektere rabatt
  * ============================================================
  *
  * NØKKELBEGREPER:
- *  - order_number: Shopifys eget ordrenummer (tekstformat, f.eks "#1001")
- *  - customer:     Kundeinfo – Shopify skiller fornavn og etternavn
- *  - line_items:   Alle produkter i ordren (linje for linje)
- *  - shipping_lines: Fraktinfo – kan være flere fraktlinjer
- *  - total_price:  Total inkl. frakt
+ *  - order_number:    Shopifys eget ordrenummer (tekstformat, f.eks "#1001")
+ *  - customer:        Kundeinfo – Shopify skiller fornavn og etternavn
+ *  - line_items:      Alle produkter i ordren (linje for linje)
+ *  - discount_codes:  Rabattkoder som er brukt på ordren
+ *  - shipping_lines:  Fraktinfo – kan være flere fraktlinjer
+ *  - total_price:     Total inkl. frakt og etter rabatter
  */
 
 // ---------------------------------------------------------------
@@ -47,16 +53,37 @@ const shopifyOrder = {
     },
   ],
 
-  // Shopify støtter flere fraktlinjer – vi henter alltid [0] (første)
-  shipping_lines: [
+  // DEL 2: Rabattkoder brukt av kunden ved kjøp.
+  // Shopify sender alltid dette som et array – det kan være 0 eller flere koder.
+  // "type" kan være "fixed_amount" (fast beløp) eller "percentage" (prosent).
+  discount_codes: [
     {
-      title: "Standard Shipping",
-      price: 49,
+      code: "VAAR25",
+      amount: 25,
+      type: "fixed_amount", // kr 25 av på hele ordren
     },
   ],
 
-  // total_price fra Shopify inkluderer alt (varer + frakt)
-  total_price: 546,
+  // DEL 2: To fraktlinjer – f.eks. fysisk vare og digital lisens sendes separat.
+  // I del 1 hentet vi bare shipping_lines[0].
+  // I del 2 håndterer vi alle linjene.
+  shipping_lines: [
+    {
+      title: "Standard frakt",
+      price: 49,
+    },
+    {
+      title: "Digital levering",
+      price: 0, // digitale produkter har ingen fraktkostnad
+    },
+  ],
+
+  // Totalberegning:
+  //  Varer:    1×299 + 2×99 = 497
+  //  Frakt:    49 + 0       =  49
+  //  Rabatt:   -25          = -25
+  //  TOTAL:                  521
+  total_price: 521,
 };
 
 // ---------------------------------------------------------------
@@ -67,7 +94,8 @@ module.exports = { shopifyOrder };
 /**
  * ============================================================
  * OPPSUMMERING:
- *  - Definerer én fake Shopify-ordre med kunde, produkter og frakt
+ *  - Definerer én fake Shopify-ordre med kunde, produkter,
+ *    rabattkoder og flere fraktlinjer
  *  - Brukes som "input" til integrasjonen i main.js
  *  - Ingen logikk her – bare datastruktur
  * ============================================================

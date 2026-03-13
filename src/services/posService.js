@@ -13,17 +13,19 @@
  *
  * I VIRKELIGHETEN ville sendTilPos() gjort et HTTP POST-kall
  * til POS-systemets SOAP-endepunkt med XML-en som body.
+ *
+ * NYT I DEL 2:
+ *  - skrivUtOrdre() viser nå alle fraktlinjer og rabatter
  * ============================================================
  */
 
-// Importer XML-byggeren fra utils-mappen
 const { byggSoapXml } = require("../utils/xmlBuilder");
 
 /**
  * skrivUtOrdre
  * ------------
  * Skriver POS-ordren ut i et lesbart format i konsollen.
- * Dette er det du ville sett i et adminpanel eller en logg.
+ * Oppdatert i del 2 til å vise fraktLinjer og rabatter.
  *
  * @param {object} posOrdre - Mappet POS-ordre
  */
@@ -32,8 +34,25 @@ function skrivUtOrdre(posOrdre) {
   console.log(`Ordre-ID:   ${posOrdre.ordreId}`);
   console.log(`Kunde:      ${posOrdre.kundenavn}`);
   console.log(`E-post:     ${posOrdre.kundeEpost}`);
-  console.log(`Frakt:      ${posOrdre.fraktMetode} (kr ${posOrdre.fraktPris},-)`);
-  console.log(`TOTAL:      kr ${posOrdre.totalBelop},-`);
+
+  // DEL 2: Vis alle fraktlinjer (ikke bare én)
+  console.log("\nFraktlinjer:");
+  posOrdre.fraktLinjer.forEach((linje, index) => {
+    const prisVisning = linje.pris === 0 ? "gratis" : `kr ${linje.pris},-`;
+    console.log(`  ${index + 1}. ${linje.metode} (${prisVisning})`);
+  });
+  console.log(`  Total frakt: kr ${posOrdre.totalFrakt},-`);
+
+  // DEL 2: Vis rabatter hvis de finnes
+  if (posOrdre.rabatter.length > 0) {
+    console.log("\nRabatter:");
+    posOrdre.rabatter.forEach((rabatt) => {
+      console.log(`  - Kode: ${rabatt.kode} → -kr ${rabatt.belop},- (${rabatt.type})`);
+    });
+    console.log(`  Total rabatt: -kr ${posOrdre.totalRabatt},-`);
+  }
+
+  console.log(`\nTOTAL:      kr ${posOrdre.totalBelop},-`);
 
   console.log("\nProduktlinjer:");
   posOrdre.produkter.forEach((produkt, index) => {
@@ -50,12 +69,6 @@ function skrivUtOrdre(posOrdre) {
  * Simulerer sending av ordren til PC-kassen via SOAP.
  * I en ekte integrasjon ville dette vært et HTTP-kall med XML som body.
  *
- * Flyten i en ekte versjon:
- *  1. Bygg SOAP XML  ← gjør vi her
- *  2. Send HTTP POST til POS-endepunkt  ← ville vært her
- *  3. Les respons fra POS  ← ville tolket XML-respons
- *  4. Returner suksess/feil til kalleren  ← returnerer her
- *
  * @param {object} posOrdre - Mappet POS-ordre
  * @returns {boolean} - true hvis sending "lykkes"
  */
@@ -63,18 +76,14 @@ function sendTilPos(posOrdre) {
   console.log("\n=== SENDER TIL POS-SYSTEM ===");
   console.log("Bygger SOAP XML...");
 
-  // Bygg SOAP XML via xmlBuilder-verktøyet
   const soapXml = byggSoapXml(posOrdre);
 
   console.log("Kobler til POS-endepunkt: http://pos-system.intern/soap/ordre");
   console.log("Sender melding...\n");
 
-  // I virkeligheten: await fetch(url, { method: "POST", body: soapXml })
-  // Her: bare skriv ut XML-en som simulasjon
   console.log("=== SOAP XML (dette ville blitt sendt) ===");
   console.log(soapXml);
 
-  // Simuler vellykket respons
   console.log("\n✓ POS-systemet svarte: 200 OK – Ordre mottatt og registrert");
 
   return true;
@@ -88,9 +97,8 @@ module.exports = { sendTilPos, skrivUtOrdre };
 /**
  * ============================================================
  * OPPSUMMERING:
- *  - skrivUtOrdre(): printer ordren lesbart i konsollen
+ *  - skrivUtOrdre(): printer ordren lesbart inkl. alle fraktlinjer og rabatter
  *  - sendTilPos(): simulerer sending av SOAP-melding til PC-kassen
  *  - I en ekte integrasjon ville sendTilPos() gjort HTTP POST til SOAP-URL
- *  - Servicelaget holder "send"-logikken separat fra mapping og validering
  * ============================================================
  */
