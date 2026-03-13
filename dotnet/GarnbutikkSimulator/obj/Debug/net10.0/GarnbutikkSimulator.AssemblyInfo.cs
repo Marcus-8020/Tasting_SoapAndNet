@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GarnbutikkSimulator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a296f703a09d069a4eaf46fcc136f55a989ab2c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5dd83e92f41de80dc419526d3e777c82b6c22597")]
 [assembly: System.Reflection.AssemblyProductAttribute("GarnbutikkSimulator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GarnbutikkSimulator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -28,11 +28,17 @@ Console.WriteLine($"""
     {GarnTestData.Varianter.Count(v => v.LagerAntall > 0 && v.LagerAntall <= 5)} varianter med lavt lager
 """);
 
-// Kjør alle tre scenariene
+// Kjør alle fire scenariene
 VariantScenario.Kjør();
 LagerScenario.Kjør();
 ShopifyMappingScenario.Kjør();
+LagerSynkScenario.Kjør();
 
 Console.WriteLine("\n╔══════════════════════════════════════════════════════════════╗");
 Console.WriteLine("║  FERDIG – alle scenarier kjørt                               ║");
+Console.WriteLine("╠══════════════════════════════════════════════════════════════╣");
+Console.WriteLine("║  1. Variant-struktur    (PCKasse SizeColors-modellen)         ║");
+Console.WriteLine("║  2. Lagerstyring        (lagersjekk per variant)              ║");
+Console.WriteLine("║  3. Shopify → PCKasse   (ordre inn via SKU-mapping)           ║");
+Console.WriteLine("║  4. PCKasse → Shopify   (lagersynk etter kassasalg)           ║");
 Console.WriteLine("╚══════════════════════════════════════════════════════════════╝\n");

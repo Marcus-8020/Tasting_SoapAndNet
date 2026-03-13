@@ -119,6 +119,63 @@ if (!string.IsNullOrEmpty(testTabell))
     );
 }
 
+// ---------------------------------------------------------------
+// TEST 6: Articles-tabellen – hva slags produkter finnes?
+// ---------------------------------------------------------------
+Console.WriteLine("\n[TEST 6] Kolonner i Articles-tabellen...");
+VisKolonner("Articles");
+
+Console.WriteLine("\n[TEST 6b] Topp 10 produkter fra Articles...");
+KjørRåQuery("SELECT TOP 10 * FROM [Articles]", VisRaderSomTabell);
+
+// ---------------------------------------------------------------
+// TEST 7: Colors-tabellen – fargekatalogen
+// ---------------------------------------------------------------
+Console.WriteLine("\n[TEST 7] Alle farger i Colors-tabellen...");
+KjørRåQuery("SELECT TOP 30 * FROM [Colors] ORDER BY 1", VisRaderSomTabell);
+
+// ---------------------------------------------------------------
+// TEST 8: Sizes-tabellen – størrelseskatalogen
+// ---------------------------------------------------------------
+Console.WriteLine("\n[TEST 8] Alle størrelser i Sizes-tabellen...");
+KjørRåQuery("SELECT * FROM [Sizes] ORDER BY 1", VisRaderSomTabell);
+
+// ---------------------------------------------------------------
+// TEST 9: SizeColors – variant-tabellen (produkt × farge × størrelse)
+// Dette er kjernetabellen for variant-håndtering i PCKasse.
+// ---------------------------------------------------------------
+Console.WriteLine("\n[TEST 9] Kolonner i SizeColors (variant-tabellen)...");
+VisKolonner("SizeColors");
+
+Console.WriteLine("\n[TEST 9b] Topp 10 varianter fra SizeColors...");
+KjørRåQuery("SELECT TOP 10 * FROM [SizeColors]", VisRaderSomTabell);
+
+// ---------------------------------------------------------------
+// TEST 10: EanNos – strekkoder per variant
+// Hver variant (SizeColor) bør ha én EAN-kode her.
+// ---------------------------------------------------------------
+Console.WriteLine("\n[TEST 10] Kolonner i EanNos (strekkoder)...");
+VisKolonner("EanNos");
+
+Console.WriteLine("\n[TEST 10b] Topp 10 rader fra EanNos...");
+KjørRåQuery("SELECT TOP 10 * FROM [EanNos]", VisRaderSomTabell);
+
+// ---------------------------------------------------------------
+// TEST 11: Orders + OrderLines – ordrestrukturen
+// Vi trenger å forstå denne for å skrive Shopify-ordrer inn hit.
+// ---------------------------------------------------------------
+Console.WriteLine("\n[TEST 11] Kolonner i Orders...");
+VisKolonner("Orders");
+
+Console.WriteLine("\n[TEST 11b] Kolonner i OrderLines...");
+VisKolonner("OrderLines");
+
+Console.WriteLine("\n[TEST 11c] Topp 5 siste ordrer (hvis noen finnes)...");
+KjørRåQuery(
+    "SELECT TOP 5 * FROM [Orders] ORDER BY 1 DESC",
+    VisRaderSomTabell
+);
+
 Console.WriteLine("\n============================================================");
 Console.WriteLine("  FERDIG – alle tester kjørt");
 Console.WriteLine("============================================================");
@@ -183,6 +240,30 @@ void KjørRåQuery(string sql, Action<SqlDataReader> behandle)
     {
         Console.WriteLine($"  ✗ SQL-feil [{ex.Number}]: {ex.Message}");
     }
+}
+
+/// <summary>
+/// Viser kolonnestruktur for en tabell – kortform for TEST 4-mønsteret.
+/// </summary>
+void VisKolonner(string tabellNavn)
+{
+    KjørQuery(
+        tabellNavn,
+        @"SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE, CHARACTER_MAXIMUM_LENGTH
+          FROM INFORMATION_SCHEMA.COLUMNS
+          WHERE TABLE_NAME = @TabellNavn
+          ORDER BY ORDINAL_POSITION",
+        reader =>
+        {
+            var kolonne  = reader["COLUMN_NAME"].ToString();
+            var type     = reader["DATA_TYPE"].ToString();
+            var nullable = reader["IS_NULLABLE"].ToString() == "YES" ? "NULL" : "NOT NULL";
+            var lengde   = reader["CHARACTER_MAXIMUM_LENGTH"] == DBNull.Value
+                           ? "" : $"({reader["CHARACTER_MAXIMUM_LENGTH"]})";
+            Console.WriteLine($"  {kolonne,-30} {type}{lengde,-15} {nullable}");
+        },
+        cmd => cmd.Parameters.AddWithValue("@TabellNavn", tabellNavn)
+    );
 }
 
 /// <summary>

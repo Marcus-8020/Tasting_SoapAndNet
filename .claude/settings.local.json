@@ -5,7 +5,8 @@
       "Bash(dotnet --version)",
       "Bash(\"/c/Program Files/dotnet/dotnet.exe\" --version)",
       "Bash(\"/c/Program Files \\(x86\\)/dotnet/dotnet.exe\" --version)",
-      "Bash(where dotnet)"
+      "Bash(where dotnet)",
+      "Bash(dotnet run)"
     ]
   }
 }
