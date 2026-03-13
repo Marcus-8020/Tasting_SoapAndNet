@@ -148,53 +148,53 @@ public static class GarnTestData
     [
         // --- Drops Alaska 50g ---
         // Nøytrale (stor etterspørsel, godt lager)
-        new("DROPS-ALA", "01", "50G", "5701700000011", Lager: 24, Fargenummer: "0100"),
-        new("DROPS-ALA", "02", "50G", "5701700000028", Lager: 18, Fargenummer: "0100"),
-        new("DROPS-ALA", "03", "50G", "5701700000035", Lager: 12, Fargenummer: "0200"),
-        new("DROPS-ALA", "04", "50G", "5701700000042", Lager:  8, Fargenummer: "0200"),
-        new("DROPS-ALA", "05", "50G", "5701700000059", Lager:  3, Fargenummer: "0200"), // ← LAVT LAGER
-        new("DROPS-ALA", "06", "50G", "5701700000066", Lager: 20, Fargenummer: "0100"),
-        new("DROPS-ALA", "07", "50G", "5701700000073", Lager:  0, Fargenummer: "0100"), // ← UTSOLGT
-        new("DROPS-ALA", "08", "50G", "5701700000080", Lager:  6, Fargenummer: "0300"),
-        new("DROPS-ALA", "12", "50G", "5701700000097", Lager:  4, Fargenummer: "0100"), // ← LAVT
-        new("DROPS-ALA", "13", "50G", "5701700000103", Lager:  0, Fargenummer: "0200"), // ← UTSOLGT
-        new("DROPS-ALA", "17", "50G", "5701700000110", Lager: 15, Fargenummer: "0100"),
-        new("DROPS-ALA", "21", "50G", "5701700000127", Lager:  2, Fargenummer: "0300"), // ← LAVT
+        new("DROPS-ALA", "01", "50G", "5701700000011", LagerAntall: 24, Fargenummer: "0100"),
+        new("DROPS-ALA", "02", "50G", "5701700000028", LagerAntall: 18, Fargenummer: "0100"),
+        new("DROPS-ALA", "03", "50G", "5701700000035", LagerAntall: 12, Fargenummer: "0200"),
+        new("DROPS-ALA", "04", "50G", "5701700000042", LagerAntall:  8, Fargenummer: "0200"),
+        new("DROPS-ALA", "05", "50G", "5701700000059", LagerAntall:  3, Fargenummer: "0200"), // ← LAVT LAGER
+        new("DROPS-ALA", "06", "50G", "5701700000066", LagerAntall: 20, Fargenummer: "0100"),
+        new("DROPS-ALA", "07", "50G", "5701700000073", LagerAntall:  0, Fargenummer: "0100"), // ← UTSOLGT
+        new("DROPS-ALA", "08", "50G", "5701700000080", LagerAntall:  6, Fargenummer: "0300"),
+        new("DROPS-ALA", "12", "50G", "5701700000097", LagerAntall:  4, Fargenummer: "0100"), // ← LAVT
+        new("DROPS-ALA", "13", "50G", "5701700000103", LagerAntall:  0, Fargenummer: "0200"), // ← UTSOLGT
+        new("DROPS-ALA", "17", "50G", "5701700000110", LagerAntall: 15, Fargenummer: "0100"),
+        new("DROPS-ALA", "21", "50G", "5701700000127", LagerAntall:  2, Fargenummer: "0300"), // ← LAVT
 
         // --- Drops Alaska 100g ---
-        new("DROPS-ALA", "01", "100G", "5701700001011", Lager: 10, Fargenummer: "0100"),
-        new("DROPS-ALA", "02", "100G", "5701700001028", Lager:  7, Fargenummer: "0100"),
-        new("DROPS-ALA", "06", "100G", "5701700001066", Lager:  5, Fargenummer: "0200"),
-        new("DROPS-ALA", "07", "100G", "5701700001073", Lager:  0, Fargenummer: "0100"), // ← UTSOLGT
+        new("DROPS-ALA", "01", "100G", "5701700001011", LagerAntall: 10, Fargenummer: "0100"),
+        new("DROPS-ALA", "02", "100G", "5701700001028", LagerAntall:  7, Fargenummer: "0100"),
+        new("DROPS-ALA", "06", "100G", "5701700001066", LagerAntall:  5, Fargenummer: "0200"),
+        new("DROPS-ALA", "07", "100G", "5701700001073", LagerAntall:  0, Fargenummer: "0100"), // ← UTSOLGT
 
         // --- Drops Karisma 50g ---
-        new("DROPS-KAR", "01", "50G", "5701700002011", Lager: 30, Fargenummer: "0100"),
-        new("DROPS-KAR", "06", "50G", "5701700002066", Lager: 22, Fargenummer: "0100"),
-        new("DROPS-KAR", "07", "50G", "5701700002073", Lager:  8, Fargenummer: "0200"),
-        new("DROPS-KAR", "12", "50G", "5701700002012", Lager:  1, Fargenummer: "0100"), // ← LAVT
-        new("DROPS-KAR", "15", "50G", "5701700002015", Lager: 14, Fargenummer: "0200"),
-        new("DROPS-KAR", "18", "50G", "5701700002018", Lager:  0, Fargenummer: "0300"), // ← UTSOLGT
-        new("DROPS-KAR", "24", "50G", "5701700002024", Lager:  9, Fargenummer: "0100"),
+        new("DROPS-KAR", "01", "50G", "5701700002011", LagerAntall: 30, Fargenummer: "0100"),
+        new("DROPS-KAR", "06", "50G", "5701700002066", LagerAntall: 22, Fargenummer: "0100"),
+        new("DROPS-KAR", "07", "50G", "5701700002073", LagerAntall:  8, Fargenummer: "0200"),
+        new("DROPS-KAR", "12", "50G", "5701700002012", LagerAntall:  1, Fargenummer: "0100"), // ← LAVT
+        new("DROPS-KAR", "15", "50G", "5701700002015", LagerAntall: 14, Fargenummer: "0200"),
+        new("DROPS-KAR", "18", "50G", "5701700002018", LagerAntall:  0, Fargenummer: "0300"), // ← UTSOLGT
+        new("DROPS-KAR", "24", "50G", "5701700002024", LagerAntall:  9, Fargenummer: "0100"),
 
         // --- Drops Sky 50g ---
-        new("DROPS-SKY", "03", "50G", "5701700003003", Lager:  6, Fargenummer: "0100"),
-        new("DROPS-SKY", "10", "50G", "5701700003010", Lager:  4, Fargenummer: "0100"),
-        new("DROPS-SKY", "14", "50G", "5701700003014", Lager:  8, Fargenummer: "0200"),
-        new("DROPS-SKY", "27", "50G", "5701700003027", Lager:  2, Fargenummer: "0100"), // ← LAVT
+        new("DROPS-SKY", "03", "50G", "5701700003003", LagerAntall:  6, Fargenummer: "0100"),
+        new("DROPS-SKY", "10", "50G", "5701700003010", LagerAntall:  4, Fargenummer: "0100"),
+        new("DROPS-SKY", "14", "50G", "5701700003014", LagerAntall:  8, Fargenummer: "0200"),
+        new("DROPS-SKY", "27", "50G", "5701700003027", LagerAntall:  2, Fargenummer: "0100"), // ← LAVT
 
         // --- Sandnes Garn Smart 50g ---
-        new("SG-SMART", "01", "50G", "7041763200011", Lager: 16, Fargenummer: "A23"),
-        new("SG-SMART", "06", "50G", "7041763200066", Lager: 12, Fargenummer: "A23"),
-        new("SG-SMART", "07", "50G", "7041763200073", Lager:  0, Fargenummer: "A22"), // ← UTSOLGT
-        new("SG-SMART", "12", "50G", "7041763200012", Lager:  5, Fargenummer: "A23"),
-        new("SG-SMART", "16", "50G", "7041763200016", Lager:  3, Fargenummer: "A24"), // ← LAVT
-        new("SG-SMART", "25", "50G", "7041763200025", Lager: 11, Fargenummer: "A23"),
+        new("SG-SMART", "01", "50G", "7041763200011", LagerAntall: 16, Fargenummer: "A23"),
+        new("SG-SMART", "06", "50G", "7041763200066", LagerAntall: 12, Fargenummer: "A23"),
+        new("SG-SMART", "07", "50G", "7041763200073", LagerAntall:  0, Fargenummer: "A22"), // ← UTSOLGT
+        new("SG-SMART", "12", "50G", "7041763200012", LagerAntall:  5, Fargenummer: "A23"),
+        new("SG-SMART", "16", "50G", "7041763200016", LagerAntall:  3, Fargenummer: "A24"), // ← LAVT
+        new("SG-SMART", "25", "50G", "7041763200025", LagerAntall: 11, Fargenummer: "A23"),
 
         // --- Sandnes Garn Tynn Silk Mohair 25g (liten nøste) ---
-        new("SG-TYNN-SILK", "03", "50G", "7041763300003", Lager:  5, Fargenummer: "B12"),
-        new("SG-TYNN-SILK", "14", "50G", "7041763300014", Lager:  8, Fargenummer: "B12"),
-        new("SG-TYNN-SILK", "27", "50G", "7041763300027", Lager:  3, Fargenummer: "B13"), // ← LAVT
-        new("SG-TYNN-SILK", "28", "50G", "7041763300028", Lager:  0, Fargenummer: "B12"), // ← UTSOLGT
+        new("SG-TYNN-SILK", "03", "50G", "7041763300003", LagerAntall:  5, Fargenummer: "B12"),
+        new("SG-TYNN-SILK", "14", "50G", "7041763300014", LagerAntall:  8, Fargenummer: "B12"),
+        new("SG-TYNN-SILK", "27", "50G", "7041763300027", LagerAntall:  3, Fargenummer: "B13"), // ← LAVT
+        new("SG-TYNN-SILK", "28", "50G", "7041763300028", LagerAntall:  0, Fargenummer: "B12"), // ← UTSOLGT
     ];
 
     // ---------------------------------------------------------------
