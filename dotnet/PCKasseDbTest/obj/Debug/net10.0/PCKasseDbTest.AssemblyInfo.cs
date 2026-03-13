@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PCKasseDbTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60ebd91b1574d41275b35fa6f112d43bf580fabe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c1e7582e45b1ca393b38e93e362ee28cd18b72c")]
 [assembly: System.Reflection.AssemblyProductAttribute("PCKasseDbTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PCKasseDbTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
