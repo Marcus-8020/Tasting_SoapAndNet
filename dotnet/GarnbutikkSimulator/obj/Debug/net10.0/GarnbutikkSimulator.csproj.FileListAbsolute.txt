@@ -1,0 +1,6 @@
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\GarnbutikkSimulator\obj\Debug\net10.0\GarnbutikkSimulator.csproj.AssemblyReference.cache
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\GarnbutikkSimulator\obj\Debug\net10.0\GarnbutikkSimulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\GarnbutikkSimulator\obj\Debug\net10.0\GarnbutikkSimulator.AssemblyInfoInputs.cache
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\GarnbutikkSimulator\obj\Debug\net10.0\GarnbutikkSimulator.AssemblyInfo.cs
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\GarnbutikkSimulator\obj\Debug\net10.0\GarnbutikkSimulator.csproj.CoreCompileInputs.cache
+C:\Users\marcu\shopify-pos-integrasjon\dotnet\GarnbutikkSimulator\obj\Debug\net10.0\GarnbutikkSimulator.sourcelink.json
